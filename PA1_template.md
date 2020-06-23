@@ -90,7 +90,7 @@ Now, make a histogram showing the total number of steps taken per day.
 with(total_steps, hist(steps, xlab = "Total Steps", main = "Total Steps Per Day", col = "orange"))
 ```
 
-![plot of chunk histogram total steps](figure/histogram total steps-1.png)
+![](PA1_template_files/figure-html/histogram total steps-1.png)<!-- -->
 
 Calculate the mean and median of the total steps per day.
 
@@ -116,7 +116,7 @@ stepsInt <- aggregate(steps ~ interval, data = data, mean, na.rm = TRUE)
 with(stepsInt, plot(interval, steps, type="l", xlab="5 Minute Interval", ylab="Average Number of Steps", main="Average Daily Number of Steps by Interval"))
 ```
 
-![plot of chunk time series plot](figure/time series plot-1.png)
+![](PA1_template_files/figure-html/time series plot-1.png)<!-- -->
 
 Find the interval that contains the maximum number of steps, averaged across all days.
 
@@ -205,7 +205,7 @@ total_steps_imp <- aggregate(steps ~ date, data = data_impute, sum, na.rm = TRUE
 with(total_steps_imp, hist(steps, xlab = "Total Steps", main = "Total Steps Per Day", col = "pink"))
 ```
 
-![plot of chunk impute histogram](figure/impute histogram-1.png)
+![](PA1_template_files/figure-html/impute histogram-1.png)<!-- -->
 
 Calculate the mean and median of the total steps per day for the new data set.
 
@@ -262,4 +262,4 @@ g + geom_line() +
         ggtitle("Average Steps on Weekdays and Weekends")
 ```
 
-![plot of chunk panel plot](figure/panel plot-1.png)
+![](PA1_template_files/figure-html/panel plot-1.png)<!-- -->
