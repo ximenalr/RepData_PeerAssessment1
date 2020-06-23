@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, options(scipen=999))
 
 First, unzip and read the data. There are three variables: steps, date, interval. Refer to **README.md** for information on the data set and variables.
 
-``` {r load data}
+``` {r load_data}
 data <- read.csv(unzip("activity.zip"))
 
 ```
@@ -52,7 +52,7 @@ total_steps <- aggregate(steps ~ date, data = data, sum, na.rm = TRUE)
 
 Now, make a histogram showing the total number of steps taken per day.
 
-```{r histogram total steps}
+```{r histogram_total_steps}
 with(total_steps, hist(steps, xlab = "Total Steps", main = "Total Steps Per Day", col = "orange"))
 ```
 
@@ -71,7 +71,7 @@ The mean is `r mean_total` and the median is `r median_total`.
 
 Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
 
-```{r time series plot}
+```{r time_series_plot}
 #Calculate avergage steps for each interval.
 stepsInt <- aggregate(steps ~ interval, data = data, mean, na.rm = TRUE)
 
@@ -92,7 +92,7 @@ There are quite a few of observations with missing values (NA) for steps. The pr
 
 The total number of NAs in the data set are as follows.
 
-```{r sum of NAs}
+```{r sum_of_NAs}
 sum(is.na(data))
 ```
 
@@ -113,7 +113,7 @@ head(data_impute)
 
 With the new data set, make a new histogram showing the total number of steps taken per day. Compare this to the first histogram made.
 
-```{r impute histogram}
+```{r impute_histogram}
 total_steps_imp <- aggregate(steps ~ date, data = data_impute, sum, na.rm = TRUE)
 
 with(total_steps_imp, hist(steps, xlab = "Total Steps", main = "Total Steps Per Day", col = "pink"))
@@ -139,7 +139,7 @@ The new median is **greater than** the previous meadian (`r median_total`).
 **Note:** The imputed data set will be used.
 
 In order to compare, a new factor variable will be created to indicate whether a "date" variable entry is a *weekday* or *weekend day*
-```{r weekday factor}
+```{r weekday_factor}
 data_impute <- mutate(data_impute, day = weekdays(date))
 
 #Assign day to either "weekend" or "weekday".
@@ -150,7 +150,7 @@ data_impute$day <- as.factor(data_impute$day)
 table(data_impute$day)
 ```
 
-```{r panel plot}
+```{r panel_plot}
 #Calculate avergage steps for weekend and weekdays.
 stepsInt_days <- aggregate(steps ~ interval + day, data = data_impute, mean)
 
